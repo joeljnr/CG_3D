@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btCarregar = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.btCarrega = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -41,22 +42,26 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // btCarregar
+            // openFileDialog1
             // 
-            this.btCarregar.Location = new System.Drawing.Point(991, 13);
-            this.btCarregar.Name = "btCarregar";
-            this.btCarregar.Size = new System.Drawing.Size(146, 23);
-            this.btCarregar.TabIndex = 1;
-            this.btCarregar.Text = "Carregar .obj";
-            this.btCarregar.UseVisualStyleBackColor = true;
-            this.btCarregar.Click += new System.EventHandler(this.btCarregar_Click);
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // btCarrega
+            // 
+            this.btCarrega.Location = new System.Drawing.Point(991, 13);
+            this.btCarrega.Name = "btCarrega";
+            this.btCarrega.Size = new System.Drawing.Size(154, 23);
+            this.btCarrega.TabIndex = 2;
+            this.btCarrega.Text = "Carrega .obj";
+            this.btCarrega.UseVisualStyleBackColor = true;
+            this.btCarrega.Click += new System.EventHandler(this.btCarrega_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1149, 689);
-            this.Controls.Add(this.btCarregar);
+            this.Controls.Add(this.btCarrega);
             this.Controls.Add(this.pictureBox1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -68,7 +73,8 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button btCarregar;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button btCarrega;
     }
 }
 
