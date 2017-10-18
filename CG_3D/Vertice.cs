@@ -16,12 +16,81 @@ namespace CG_3D
             this.z = z;
         }
 
-        public double X { get; set; }
-        public double Y { get; set; }
-        public double Z { get; set; }
-        public double Nx { get; set; }
-        public double Ny { get; set; }
-        public double Nz { get; set; }
+        public double X
+        {
+            get
+            {
+                return x;
+            }
+
+            set
+            {
+                x = value;
+            }
+        }
+
+        public double Y
+        {
+            get
+            {
+                return y;
+            }
+
+            set
+            {
+                y = value;
+            }
+        }
+
+        public double Z
+        {
+            get
+            {
+                return z;
+            }
+
+            set
+            {
+                z = value;
+            }
+        }
+        public double Nx
+        {
+            get
+            {
+                return nx;
+            }
+
+            set
+            {
+                nx = value;
+            }
+        }
+        public double Ny
+        {
+            get
+            {
+                return ny;
+            }
+
+            set
+            {
+                ny = value;
+            }
+        }
+        public double Nz
+        {
+            get
+            {
+                return nz;
+            }
+
+            set
+            {
+                nz = value;
+            }
+        }
+
 
     }
 }
