@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.btCarrega = new System.Windows.Forms.Button();
@@ -42,7 +43,7 @@
             // 
             this.pictureBox1.Location = new System.Drawing.Point(12, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(972, 665);
+            this.pictureBox1.Size = new System.Drawing.Size(949, 665);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -52,9 +53,9 @@
             // 
             // btCarrega
             // 
-            this.btCarrega.Location = new System.Drawing.Point(991, 13);
+            this.btCarrega.Location = new System.Drawing.Point(967, 13);
             this.btCarrega.Name = "btCarrega";
-            this.btCarrega.Size = new System.Drawing.Size(154, 23);
+            this.btCarrega.Size = new System.Drawing.Size(178, 23);
             this.btCarrega.TabIndex = 2;
             this.btCarrega.Text = "Carrega .obj";
             this.btCarrega.UseVisualStyleBackColor = true;
@@ -72,31 +73,31 @@
             // 
             // btLateral
             // 
-            this.btLateral.Location = new System.Drawing.Point(1009, 67);
+            this.btLateral.Image = ((System.Drawing.Image)(resources.GetObject("btLateral.Image")));
+            this.btLateral.Location = new System.Drawing.Point(1027, 42);
             this.btLateral.Name = "btLateral";
-            this.btLateral.Size = new System.Drawing.Size(116, 23);
+            this.btLateral.Size = new System.Drawing.Size(55, 55);
             this.btLateral.TabIndex = 4;
-            this.btLateral.Text = "Projeção Lateral";
             this.btLateral.UseVisualStyleBackColor = true;
             this.btLateral.Click += new System.EventHandler(this.btLateral_Click);
             // 
             // btFrontal
             // 
-            this.btFrontal.Location = new System.Drawing.Point(1009, 96);
+            this.btFrontal.Image = ((System.Drawing.Image)(resources.GetObject("btFrontal.Image")));
+            this.btFrontal.Location = new System.Drawing.Point(966, 42);
             this.btFrontal.Name = "btFrontal";
-            this.btFrontal.Size = new System.Drawing.Size(116, 23);
+            this.btFrontal.Size = new System.Drawing.Size(55, 55);
             this.btFrontal.TabIndex = 5;
-            this.btFrontal.Text = "Projeção Frontal";
             this.btFrontal.UseVisualStyleBackColor = true;
             this.btFrontal.Click += new System.EventHandler(this.btFrontal_Click);
             // 
             // btSuperior
             // 
-            this.btSuperior.Location = new System.Drawing.Point(1009, 125);
+            this.btSuperior.Image = ((System.Drawing.Image)(resources.GetObject("btSuperior.Image")));
+            this.btSuperior.Location = new System.Drawing.Point(1088, 42);
             this.btSuperior.Name = "btSuperior";
-            this.btSuperior.Size = new System.Drawing.Size(116, 23);
+            this.btSuperior.Size = new System.Drawing.Size(55, 55);
             this.btSuperior.TabIndex = 6;
-            this.btSuperior.Text = "Projeção Superior";
             this.btSuperior.UseVisualStyleBackColor = true;
             this.btSuperior.Click += new System.EventHandler(this.btSuperior_Click);
             // 
