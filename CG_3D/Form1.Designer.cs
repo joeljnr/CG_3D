@@ -36,6 +36,10 @@
             this.btLateral = new System.Windows.Forms.Button();
             this.btFrontal = new System.Windows.Forms.Button();
             this.btSuperior = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.rbTranslacao = new System.Windows.Forms.RadioButton();
+            this.rbEscala = new System.Windows.Forms.RadioButton();
+            this.rbRotação = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,6 +50,8 @@
             this.pictureBox1.Size = new System.Drawing.Size(949, 665);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
+            this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
             // 
             // openFileDialog1
             // 
@@ -101,11 +107,57 @@
             this.btSuperior.UseVisualStyleBackColor = true;
             this.btSuperior.Click += new System.EventHandler(this.btSuperior_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(968, 114);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(86, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Transformações:";
+            // 
+            // rbTranslacao
+            // 
+            this.rbTranslacao.AutoSize = true;
+            this.rbTranslacao.Location = new System.Drawing.Point(971, 130);
+            this.rbTranslacao.Name = "rbTranslacao";
+            this.rbTranslacao.Size = new System.Drawing.Size(78, 17);
+            this.rbTranslacao.TabIndex = 9;
+            this.rbTranslacao.TabStop = true;
+            this.rbTranslacao.Text = "Translação";
+            this.rbTranslacao.UseVisualStyleBackColor = true;
+            // 
+            // rbEscala
+            // 
+            this.rbEscala.AutoSize = true;
+            this.rbEscala.Location = new System.Drawing.Point(971, 154);
+            this.rbEscala.Name = "rbEscala";
+            this.rbEscala.Size = new System.Drawing.Size(57, 17);
+            this.rbEscala.TabIndex = 10;
+            this.rbEscala.TabStop = true;
+            this.rbEscala.Text = "Escala";
+            this.rbEscala.UseVisualStyleBackColor = true;
+            // 
+            // rbRotação
+            // 
+            this.rbRotação.AutoSize = true;
+            this.rbRotação.Location = new System.Drawing.Point(971, 178);
+            this.rbRotação.Name = "rbRotação";
+            this.rbRotação.Size = new System.Drawing.Size(66, 17);
+            this.rbRotação.TabIndex = 11;
+            this.rbRotação.TabStop = true;
+            this.rbRotação.Text = "Rotação";
+            this.rbRotação.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1149, 689);
+            this.Controls.Add(this.rbRotação);
+            this.Controls.Add(this.rbEscala);
+            this.Controls.Add(this.rbTranslacao);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btSuperior);
             this.Controls.Add(this.btFrontal);
             this.Controls.Add(this.btLateral);
@@ -117,6 +169,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -129,6 +182,10 @@
         private System.Windows.Forms.Button btLateral;
         private System.Windows.Forms.Button btFrontal;
         private System.Windows.Forms.Button btSuperior;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.RadioButton rbTranslacao;
+        private System.Windows.Forms.RadioButton rbEscala;
+        private System.Windows.Forms.RadioButton rbRotação;
     }
 }
 

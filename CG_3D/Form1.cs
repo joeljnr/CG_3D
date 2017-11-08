@@ -17,7 +17,7 @@ namespace CG_3D
         int largura;
         int altura;
         Objeto obj;
-
+        int x = 0, y = 0;
         public Form1()
         {
             InitializeComponent();
@@ -142,6 +142,7 @@ namespace CG_3D
                     if(aux[0].Equals("v"))
                     {
                         obj.Originais.Add(new Vertice(double.Parse(aux[1]), double.Parse(aux[2]), double.Parse(aux[3])));
+                        obj.Atuais.Add(new Vertice(double.Parse(aux[1]), double.Parse(aux[2]), double.Parse(aux[3])));
                     }
                     else if (aux[0].Equals("f"))
                     {
@@ -168,6 +169,7 @@ namespace CG_3D
 
                         f.Vertices.Add(obj.Originais[int.Parse(pto) - 1]);
                         obj.Faces.Add(f);
+
                     }
                 }
                 
@@ -244,6 +246,26 @@ namespace CG_3D
             }
         }
 
+        public void desenhaFrontal()
+        {
+            limpar();
+            int i, j;
+            if (obj != null)
+            {
+                for (i = 0; i < obj.Faces.Count; i++)
+                {
+                    for (j = 0; j < obj.Faces[i].Vertices.Count - 1; j++)
+                    {
+                        bresenham((int)obj.Faces[i].Vertices[j].X, (int)obj.Faces[i].Vertices[j].Y, (int)obj.Faces[i].Vertices[j + 1].X, (int)obj.Faces[i].Vertices[j + 1].Y, Color.FromArgb(0, 0, 0));
+                    }
+
+                    bresenham((int)obj.Faces[i].Vertices[j].X, (int)obj.Faces[i].Vertices[j].Y, (int)obj.Faces[i].Vertices[0].X, (int)obj.Faces[i].Vertices[0].Y, Color.FromArgb(0, 0, 0));
+                }
+
+                pictureBox1.Image = bmp;
+            }
+        }
+
         private void btSuperior_Click(object sender, EventArgs e)
         {
             limpar();
@@ -262,6 +284,43 @@ namespace CG_3D
 
                 pictureBox1.Image = bmp;
             }
+        }
+
+        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+            int dx, dy;
+
+            if (e.X < pictureBox1.Width && e.Y < pictureBox1.Height)
+            {
+                dx = x - e.X;
+                dy = y - e.Y;
+
+                if (Math.Abs(dx) > x || Math.Abs(dy) > y)
+                {
+                    if (rbTranslacao.Checked)
+                        obj.translacao(e.X, e.Y, 0);
+
+                    else if (rbEscala.Checked)
+                        ; //Escala
+
+                    else if (rbRotação.Checked)
+                    {
+                        if (dx != 0)
+                            ;//Rotacao Y
+                        if (dy != 0)
+                            ;//Rotacao X
+                    }
+
+                    desenhaFrontal();
+                    Console.WriteLine("Entrou");
+                }
+            }                
+        }
+
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            x = e.X;
+            y = e.Y;
         }
     }
 }

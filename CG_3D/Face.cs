@@ -26,5 +26,7 @@ namespace CG_3D
                 vertices = value;
             }
         }
+
+        
     }
 }
