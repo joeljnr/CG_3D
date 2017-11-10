@@ -61,11 +61,12 @@ namespace CG_3D
 
                         if (y2 < y1)
                         {
-                            if (x < pictureBox1.Width && y < pictureBox1.Height)
+                            if (x + largura < pictureBox1.Width && y + altura < pictureBox1.Height && x + largura >= 0 && y + altura >= 0)
                                 bmp.SetPixel(x + largura, y + altura, cor);
                         }
                         else
-                            bmp.SetPixel(x + largura, y + altura, cor);
+                            if (x + largura < pictureBox1.Width && y + altura < pictureBox1.Height && x + largura >= 0 && y + altura >= 0)
+                                bmp.SetPixel(x + largura, y + altura, cor);
                         if (d <= 0)
                         {
                             d += incE;
@@ -99,7 +100,8 @@ namespace CG_3D
 
                     for (y = y1; y <= y2; y++)
                     {
-                        bmp.SetPixel(x + largura, y + altura, cor);
+                        if (x + largura < pictureBox1.Width && y + altura < pictureBox1.Height && x + largura >= 0 && y + altura >= 0)
+                            bmp.SetPixel(x + largura, y + altura, cor);
                         if (d <= 0)
                         {
                             d += incE;
@@ -288,6 +290,7 @@ namespace CG_3D
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
+            /*
             int dx, dy;
 
             if (e.X < pictureBox1.Width && e.Y < pictureBox1.Height)
@@ -314,13 +317,29 @@ namespace CG_3D
                     desenhaFrontal();
                     Console.WriteLine("Entrou");
                 }
-            }                
+            }*/
+        }
+
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            
         }
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            x = e.X;
-            y = e.Y;
+            if (e.X < pictureBox1.Width && e.Y < pictureBox1.Height)
+            {
+                if (rbTranslacao.Checked)
+                {
+                    Vertice v = obj.encontraPtoMedio();
+                    obj.translacao(-v.X, -v.Y, 0);
+                    obj.translacao(e.X, e.Y, 0);
+
+                    limpar();
+                    desenhaFrontal();
+                }
+                
+            }
         }
     }
 }

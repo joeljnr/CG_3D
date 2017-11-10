@@ -70,42 +70,18 @@ namespace CG_3D
             }
         }
 
-
-        public double[,] multiplica4p4(double[,] m1, double[,] m2) {
-            double[,] res = new double[4, 4];
-
-            for (int i = 0; i < 4; i++)
-            {
-                for (int j = 0; j < 4; j++)
-                {  
-                    for (int k = 0; k < 4; k++)
-                    {
-                        res[i,j] += m1[i,j] * m2[j,k];
-                    }
-                }
-            }
-
-            return res;
-        }
-
-        public double[,] multiplica4p1(double[,] m1, double[,] m2)
+        public double[,] multMat(double[,] A, double[,] B, int LinhasA, int LinhasB, int ColunasA, int ColunasB)
         {
-            double[,] res = new double[4, 1];
+            double[,] C = new double[LinhasA, ColunasB];
 
-            for (int i = 0; i < 4; i++)
-            {
-                for (int j = 0; j < 4; j++)
-                {
-                    for (int k = 0; k < 1; k++)
-                    {
-                        res[i, k] += m1[i, j] * m2[j, k];
-                    }
-                }
-            }
+            for (int i = 0; i < LinhasA; i++)
+                for (int j = 0; j < ColunasB; j++)
+                    for (int k = 0; k < LinhasB; k++)
+                        C[i, j] += A[i, k] * B[k, j];
 
-            return res;
+            return C;
+
         }
-
         public void aplicaAtuais() {
 
             double[,] pto = new double[4, 1];
@@ -117,9 +93,9 @@ namespace CG_3D
                 pto[0, 0] = atuais[i].X;
                 pto[1, 0] = atuais[i].Y;
                 pto[2, 0] = atuais[i].Z;
-
-                res = multiplica4p1(pto, acumulada);
-
+                
+                res = multMat(acumulada, pto, 4, 4, 4, 1);
+                
                 atuais[i].X = res[0, 0];
                 atuais[i].Y = res[1, 0];
                 atuais[i].Z = res[2, 0];
@@ -144,7 +120,7 @@ namespace CG_3D
                     pto[1, 0] = faces[i].Vertices[j].Y;
                     pto[2, 0] = faces[i].Vertices[j].Z;
 
-                    res = multiplica4p1(pto, acumulada);
+                    res = multMat(acumulada,pto, 4, 4, 4, 1);
 
                     // atualiza novas faces
                     faces[i].Vertices[j].X = res[0, 0];
@@ -154,17 +130,50 @@ namespace CG_3D
             }
         }
 
+        public Vertice encontraPtoMedio() {
+            double maiorx = 0, maiory = 0, maiorz = 0;
+            double menorx = 99999, menory = 99999, menorz = 99999;
+
+            for (int i = 0; i < atuais.Count; i++) {
+                if (atuais[i].X > maiorx)
+                    maiorx = atuais[i].X;
+                else
+                    if (atuais[i].X < menorx)
+                        menorx = atuais[i].X;
+
+                if (atuais[i].Y > maiory)
+                    maiory = atuais[i].Y;
+                else
+                    if (atuais[i].Y < menory)
+                    menory = atuais[i].Y;
+
+                if (atuais[i].Z > maiorz)
+                    maiorz = atuais[i].Z;
+                else
+                    if (atuais[i].Z < menorz)
+                    menorz = atuais[i].Z;
+            }
+
+            return new Vertice(maiorx - menorx, maiory - menory, maiorz - menorz);
+        }
+
         public void translacao(double x, double y, double z) {
             double[,] mat = new double[4,4] { { 1, 0, 0, x },
                                               { 0, 1, 0, y },
                                               { 0, 0, 1, z },
                                               { 0, 0, 0, 1 } };
 
-            acumulada = multiplica4p4(mat, acumulada);
+            acumulada = multMat(mat, acumulada, 4, 4, 4, 4);
+
+            for (int i = 0; i < 4; i++)
+            {
+                Console.WriteLine();
+                for (int j = 0; j < 4; j++)
+                    Console.Write(acumulada[i, j] + "\t");
+            }
             aplicaAtuais();
             aplicaFaces();
-            
         } 
-
     }
+
 }
