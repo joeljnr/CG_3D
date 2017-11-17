@@ -88,11 +88,11 @@ namespace CG_3D
             double[,] res = new double[4, 1];
             pto[3, 0] = 1;
 
-            for (int i = 0; i < atuais.Count; i++)
+            for (int i = 0; i < originais.Count; i++)
             {
-                pto[0, 0] = atuais[i].X;
-                pto[1, 0] = atuais[i].Y;
-                pto[2, 0] = atuais[i].Z;
+                pto[0, 0] = originais[i].X;
+                pto[1, 0] = originais[i].Y;
+                pto[2, 0] = originais[i].Z;
                 
                 res = multMat(acumulada, pto, 4, 4, 4, 1);
                 
@@ -100,32 +100,31 @@ namespace CG_3D
                 atuais[i].Y = res[1, 0];
                 atuais[i].Z = res[2, 0];
             }
-
-
+            
         }
 
         public Vertice encontraPtoMedio() {
             double maiorx = 0, maiory = 0, maiorz = 0;
             double menorx = 99999, menory = 99999, menorz = 99999;
 
-            for (int i = 0; i < atuais.Count; i++) {
-                if (atuais[i].X > maiorx)
-                    maiorx = atuais[i].X;
+            for (int i = 0; i < originais.Count; i++) {
+                if (originais[i].X > maiorx)
+                    maiorx = originais[i].X;
                 else
-                    if (atuais[i].X < menorx)
-                        menorx = atuais[i].X;
+                    if (originais[i].X < menorx)
+                        menorx = originais[i].X;
 
-                if (atuais[i].Y > maiory)
-                    maiory = atuais[i].Y;
+                if (originais[i].Y > maiory)
+                    maiory = originais[i].Y;
                 else
-                    if (atuais[i].Y < menory)
-                    menory = atuais[i].Y;
+                    if (originais[i].Y < menory)
+                    menory = originais[i].Y;
 
-                if (atuais[i].Z > maiorz)
-                    maiorz = atuais[i].Z;
+                if (originais[i].Z > maiorz)
+                    maiorz = originais[i].Z;
                 else
-                    if (atuais[i].Z < menorz)
-                    menorz = atuais[i].Z;
+                    if (originais[i].Z < menorz)
+                    menorz = originais[i].Z;
             }
 
             return new Vertice(maiorx - menorx, maiory - menory, maiorz - menorz);
@@ -146,8 +145,9 @@ namespace CG_3D
                     Console.Write(acumulada[i, j] + "\t");
             }
             aplicaAtuais();
-            //aplicaFaces();
         } 
+
+
     }
 
 }
