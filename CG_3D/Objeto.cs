@@ -104,32 +104,6 @@ namespace CG_3D
 
         }
 
-        public void aplicaFaces()
-        {
-
-            double[,] pto = new double[4, 1];
-            double[,] res = new double[4, 1];
-            pto[3, 0] = 1;
-
-            for (int i = 0; i < faces.Count; i++)
-            {
-                for(int j = 0; j < faces[i].Vertices.Count; j++)
-                {
-                    // calcula novas faces
-                    pto[0, 0] = faces[i].Vertices[j].X;
-                    pto[1, 0] = faces[i].Vertices[j].Y;
-                    pto[2, 0] = faces[i].Vertices[j].Z;
-
-                    res = multMat(acumulada,pto, 4, 4, 4, 1);
-
-                    // atualiza novas faces
-                    faces[i].Vertices[j].X = res[0, 0];
-                    faces[i].Vertices[j].Y = res[1, 0];
-                    faces[i].Vertices[j].Z = res[2, 0];
-                }
-            }
-        }
-
         public Vertice encontraPtoMedio() {
             double maiorx = 0, maiory = 0, maiorz = 0;
             double menorx = 99999, menory = 99999, menorz = 99999;
@@ -172,7 +146,7 @@ namespace CG_3D
                     Console.Write(acumulada[i, j] + "\t");
             }
             aplicaAtuais();
-            aplicaFaces();
+            //aplicaFaces();
         } 
     }
 

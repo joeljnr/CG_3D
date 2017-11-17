@@ -8,13 +8,13 @@ namespace CG_3D
 {
     class Face
     {
-        List<Vertice> vertices;
+        List<int> vertices;
         Vertice normal;
 
         public Face() {
-            vertices = new List<Vertice>();
+            vertices = new List<int>();
         }
-        public List<Vertice> Vertices
+        public List<int> Vertices
         {
             get
             {

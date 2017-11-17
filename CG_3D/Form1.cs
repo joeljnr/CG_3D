@@ -155,21 +155,21 @@ namespace CG_3D
                             pto += aux[1][k];
                         }
                         
-                        f.Vertices.Add(obj.Originais[int.Parse(pto) - 1]);
+                        f.Vertices.Add(int.Parse(pto) - 1);
                         pto = "";
                         for (k = 0; k < aux[2].Length && aux[2][k] != '/'; k++)
                         {
                             pto += aux[2][k];
                         }
 
-                        f.Vertices.Add(obj.Originais[int.Parse(pto) - 1]);
+                        f.Vertices.Add(int.Parse(pto) - 1);
                         pto = "";
                         for (k = 0; k < aux[3].Length && aux[3][k] != '/'; k++)
                         {
                             pto += aux[3][k];
                         }
 
-                        f.Vertices.Add(obj.Originais[int.Parse(pto) - 1]);
+                        f.Vertices.Add(int.Parse(pto) - 1);
                         obj.Faces.Add(f);
 
                     }
@@ -181,10 +181,10 @@ namespace CG_3D
                 {
                     for(j = 0; j < obj.Faces[i].Vertices.Count - 1; j++)
                     {
-                        bresenham((int)obj.Faces[i].Vertices[j].X, (int)obj.Faces[i].Vertices[j].Y, (int)obj.Faces[i].Vertices[j+1].X, (int)obj.Faces[i].Vertices[j+1].Y, Color.FromArgb(0,0,0));
+                        bresenham((int)obj.Atuais[obj.Faces[i].Vertices[j]].X, (int)obj.Atuais[obj.Faces[i].Vertices[j]].Y, (int)obj.Atuais[obj.Faces[i].Vertices[j+1]].X, (int)obj.Atuais[obj.Faces[i].Vertices[j+1]].Y, Color.FromArgb(0,0,0));
                     }
 
-                    bresenham((int)obj.Faces[i].Vertices[j].X, (int)obj.Faces[i].Vertices[j].Y, (int)obj.Faces[i].Vertices[0].X, (int)obj.Faces[i].Vertices[0].Y, Color.FromArgb(0, 0, 0));
+                    bresenham((int)obj.Atuais[obj.Faces[i].Vertices[j]].X, (int)obj.Atuais[obj.Faces[i].Vertices[j]].Y, (int)obj.Atuais[obj.Faces[i].Vertices[0]].X, (int)obj.Atuais[obj.Faces[i].Vertices[0]].Y, Color.FromArgb(0, 0, 0));
                 }
 
                 pictureBox1.Image = bmp;
@@ -218,10 +218,10 @@ namespace CG_3D
                 {
                     for (j = 0; j < obj.Faces[i].Vertices.Count - 1; j++)
                     {
-                        bresenham((int)obj.Faces[i].Vertices[j].Z, (int)obj.Faces[i].Vertices[j].Y, (int)obj.Faces[i].Vertices[j + 1].Z, (int)obj.Faces[i].Vertices[j + 1].Y, Color.FromArgb(0, 0, 0));
+                        bresenham((int)obj.Atuais[obj.Faces[i].Vertices[j]].Z, (int)obj.Atuais[obj.Faces[i].Vertices[j]].Y, (int)obj.Atuais[obj.Faces[i].Vertices[j + 1]].Z, (int)obj.Atuais[obj.Faces[i].Vertices[j + 1]].Y, Color.FromArgb(0, 0, 0));
                     }
 
-                    bresenham((int)obj.Faces[i].Vertices[j].Z, (int)obj.Faces[i].Vertices[j].Y, (int)obj.Faces[i].Vertices[0].Z, (int)obj.Faces[i].Vertices[0].Y, Color.FromArgb(0, 0, 0));
+                    bresenham((int)obj.Atuais[obj.Faces[i].Vertices[j]].Z, (int)obj.Atuais[obj.Faces[i].Vertices[j]].Y, (int)obj.Atuais[obj.Faces[i].Vertices[0]].Z, (int)obj.Atuais[obj.Faces[i].Vertices[0]].Y, Color.FromArgb(0, 0, 0));
                 }
 
                 pictureBox1.Image = bmp;
@@ -238,10 +238,10 @@ namespace CG_3D
                 {
                     for (j = 0; j < obj.Faces[i].Vertices.Count - 1; j++)
                     {
-                        bresenham((int)obj.Faces[i].Vertices[j].X, (int)obj.Faces[i].Vertices[j].Y, (int)obj.Faces[i].Vertices[j + 1].X, (int)obj.Faces[i].Vertices[j + 1].Y, Color.FromArgb(0, 0, 0));
+                        bresenham((int)obj.Atuais[obj.Faces[i].Vertices[j]].X, (int)obj.Atuais[obj.Faces[i].Vertices[j]].Y, (int)obj.Atuais[obj.Faces[i].Vertices[j + 1]].X, (int)obj.Atuais[obj.Faces[i].Vertices[j + 1]].Y, Color.FromArgb(0, 0, 0));
                     }
 
-                    bresenham((int)obj.Faces[i].Vertices[j].X, (int)obj.Faces[i].Vertices[j].Y, (int)obj.Faces[i].Vertices[0].X, (int)obj.Faces[i].Vertices[0].Y, Color.FromArgb(0, 0, 0));
+                    bresenham((int)obj.Atuais[obj.Faces[i].Vertices[j]].X, (int)obj.Atuais[obj.Faces[i].Vertices[j]].Y, (int)obj.Atuais[obj.Faces[i].Vertices[0]].X, (int)obj.Atuais[obj.Faces[i].Vertices[0]].Y, Color.FromArgb(0, 0, 0));
                 }
 
                 pictureBox1.Image = bmp;
@@ -258,12 +258,11 @@ namespace CG_3D
                 {
                     for (j = 0; j < obj.Faces[i].Vertices.Count - 1; j++)
                     {
-                        bresenham((int)obj.Faces[i].Vertices[j].X, (int)obj.Faces[i].Vertices[j].Y, (int)obj.Faces[i].Vertices[j + 1].X, (int)obj.Faces[i].Vertices[j + 1].Y, Color.FromArgb(0, 0, 0));
+                        bresenham((int)obj.Atuais[obj.Faces[i].Vertices[j]].X, (int)obj.Atuais[obj.Faces[i].Vertices[j]].Y, (int)obj.Atuais[obj.Faces[i].Vertices[j + 1]].X, (int)obj.Atuais[obj.Faces[i].Vertices[j + 1]].Y, Color.FromArgb(0, 0, 0));
                     }
 
-                    bresenham((int)obj.Faces[i].Vertices[j].X, (int)obj.Faces[i].Vertices[j].Y, (int)obj.Faces[i].Vertices[0].X, (int)obj.Faces[i].Vertices[0].Y, Color.FromArgb(0, 0, 0));
+                    bresenham((int)obj.Atuais[obj.Faces[i].Vertices[j]].X, (int)obj.Atuais[obj.Faces[i].Vertices[j]].Y, (int)obj.Atuais[obj.Faces[i].Vertices[0]].X, (int)obj.Atuais[obj.Faces[i].Vertices[0]].Y, Color.FromArgb(0, 0, 0));
                 }
-
                 pictureBox1.Image = bmp;
             }
         }
@@ -278,10 +277,10 @@ namespace CG_3D
                 {
                     for (j = 0; j < obj.Faces[i].Vertices.Count - 1; j++)
                     {
-                        bresenham((int)obj.Faces[i].Vertices[j].X, (int)obj.Faces[i].Vertices[j].Z, (int)obj.Faces[i].Vertices[j + 1].X, (int)obj.Faces[i].Vertices[j + 1].Z, Color.FromArgb(0, 0, 0));
+                        bresenham((int)obj.Atuais[obj.Faces[i].Vertices[j]].X, (int)obj.Atuais[obj.Faces[i].Vertices[j]].Z, (int)obj.Atuais[obj.Faces[i].Vertices[j + 1]].X, (int)obj.Atuais[obj.Faces[i].Vertices[j + 1]].Z, Color.FromArgb(0, 0, 0));
                     }
 
-                    bresenham((int)obj.Faces[i].Vertices[j].X, (int)obj.Faces[i].Vertices[j].Z, (int)obj.Faces[i].Vertices[0].X, (int)obj.Faces[i].Vertices[0].Z, Color.FromArgb(0, 0, 0));
+                    bresenham((int)obj.Atuais[obj.Faces[i].Vertices[j]].X, (int)obj.Atuais[obj.Faces[i].Vertices[j]].Z, (int)obj.Atuais[obj.Faces[i].Vertices[0]].X, (int)obj.Atuais[obj.Faces[i].Vertices[0]].Z, Color.FromArgb(0, 0, 0));
                 }
 
                 pictureBox1.Image = bmp;
@@ -332,13 +331,12 @@ namespace CG_3D
                 if (rbTranslacao.Checked)
                 {
                     Vertice v = obj.encontraPtoMedio();
-                    obj.translacao(-v.X, -v.Y, 0);
+                    obj.translacao(-v.X, -v.Y, -v.Z);
                     obj.translacao(e.X, e.Y, 0);
 
                     limpar();
                     desenhaFrontal();
                 }
-                
             }
         }
     }
